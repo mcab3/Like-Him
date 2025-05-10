@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Peaceful Vinland Vibes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: url('https://images.unsplash.com/photo-1600788744115-8b024d229948?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #f9f9f9;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading-screen img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      z-index: 1;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .content button {
+      background-color: #e6e6e6;
+      color: #111;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .content button:hover {
+      background-color: #cfcfcf;
+    }
+
+    .doge-runner {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <img src="https://media.giphy.com/media/SzZmgnJJ34Mcfacu7z/giphy.gif" alt="Loading..." />
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>This... is a peaceful place.</h1>
+    <p>Take a breath. Nothing happens here. Just rest.</p>
+    <button onclick="toggleMusic()">Toggle Music</button>
+  </div>
+
+  <!-- Running Doge GIF -->
+  <img src="https://media.giphy.com/media/SzZmgnJJ34Mcfacu7z/giphy.gif" alt="Running Pixel Doge" class="doge-runner" />
+
+  <!-- Background Music -->
+  <audio id="bgm" loop>
+    <source src="assets/audio/duvet.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const bgm = document.getElementById('bgm');
+    let playing = false;
+
+    function toggleMusic() {
+      if (playing) {
+        bgm.pause();
+      } else {
+        bgm.play();
+      }
+      playing = !playing;
+    }
+
+    // Loading screen fade out
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    });
+  </script>
+</body>
+</html>
